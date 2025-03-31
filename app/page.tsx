@@ -25,7 +25,7 @@ export default function Home() {
       <header className="sticky top-0 z-10 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center">
           <Link href="/" className="font-serif text-xl font-bold">
-            Sacred Architecture
+            Sacred Structures
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="/" className="text-sm font-medium underline underline-offset-4">
@@ -47,7 +47,7 @@ export default function Home() {
         <section className="mb-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="font-serif text-3xl font-bold tracking-tight">Catholic Architecture</h1>
+            </div>
               <p className="text-muted-foreground">Explore the beauty and history of sacred spaces around the world</p>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
