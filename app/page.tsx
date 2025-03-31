@@ -47,7 +47,7 @@ export default function Home() {
         <section className="mb-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-            </div>
+          
               <p className="text-muted-foreground">Explore the beauty and history of sacred spaces around the world</p>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
