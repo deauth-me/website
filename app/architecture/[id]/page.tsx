@@ -1002,5 +1002,70 @@ const architectureData = [
     architecturalStyle: "Russian Orthodox",
     features: ["Colorful onion domes", "Asymmetrical design", "Nine chapels"],
   },
+  {
+    id: "sant-andrea-al-quirinale",
+    name: "Sant'Andrea al Quirinale",
+    type: "Church",
+    location: "Rome, Italy",
+    imageUrl: "/images/sant-andrea-al-quirinale.jpg",
+    period: "Baroque",
+    description:
+      "A Jesuit church designed by Gian Lorenzo Bernini, considered a gem of Baroque architecture. It features an elliptical plan, rich polychrome marble, and a famous gilded stucco dome.",
+    yearBuilt: "1658-1670",
+    architecturalStyle: "Italian Baroque",
+    features: ["Elliptical plan", "Bernini design", "Gilded dome", "Polychrome marble"],
+  },
+  {
+    id: "san-carlo-alle-quattro-fontane",
+    name: "San Carlo alle Quattro Fontane",
+    type: "Church",
+    location: "Rome, Italy",
+    imageUrl: "/images/san-carlo-alle-quattro-fontane.jpg",
+    period: "Baroque",
+    description:
+      "An iconic work by Francesco Borromini, known for its intricate geometric design based on triangles and its undulating facade. It stands at an intersection marked by four fountains.",
+    yearBuilt: "1638-1646",
+    architecturalStyle: "Italian Baroque",
+    features: ["Borromini design", "Undulating facade", "Complex geometric plan", "Oval dome"],
+  },
+   {
+    id: "sant-ivo-alla-sapienza",
+    name: "Sant'Ivo alla Sapienza",
+    type: "Church",
+    location: "Rome, Italy",
+    imageUrl: "/images/sant-ivo-alla-sapienza.jpg",
+    period: "Baroque",
+    description:
+      "Another masterpiece by Francesco Borromini, this church is famed for its unique central plan resembling a Star of David and its extraordinary corkscrew lantern atop the dome.",
+    yearBuilt: "1642-1660",
+    architecturalStyle: "Italian Baroque",
+    features: ["Borromini design", "Central plan (Star of David)", "Corkscrew lantern", "Concave facade"],
+  },
+  {
+    id: "san-lorenzo-turin",
+    name: "Real Chiesa di San Lorenzo",
+    type: "Church",
+    location: "Turin, Italy",
+    imageUrl: "/images/san-lorenzo-turin.jpg",
+    period: "Baroque",
+    description:
+      "Designed by Guarino Guarini, this church is celebrated for its mathematical complexity and stunning dome created by intersecting ribs forming an eight-pointed star pattern.",
+    yearBuilt: "1668-1687",
+    architecturalStyle: "Italian Baroque",
+    features: ["Guarini design", "Intersecting rib dome", "Complex geometry", "Central plan"],
+  },
+  {
+    id: "cappella-della-sacra-sindone",
+    name: "Cappella della Sacra Sindone",
+    type: "Chapel",
+    location: "Turin, Italy",
+    imageUrl: "/images/cappella-della-sacra-sindone.jpg",
+    period: "Baroque",
+    description:
+      "A chapel by Guarino Guarini built to house the Shroud of Turin (located within Turin Cathedral). It is renowned for its dramatic, mathematically complex dome constructed with superimposed arches.",
+    yearBuilt: "1668-1694",
+    architecturalStyle: "Italian Baroque",
+    features: ["Guarini design", "Layered arch dome", "Designed for Shroud of Turin", "Black marble decoration"],
+  }
 ]
 
