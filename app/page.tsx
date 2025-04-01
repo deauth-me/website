@@ -414,7 +414,7 @@ const architectureData = [
     yearBuilt: "1668-1694",
     architecturalStyle: "Italian Baroque",
     features: ["Guarini design", "Layered arch dome", "Designed for Shroud of Turin", "Black marble decoration"],
-  }
+  },
   // New entries for Venice churches
   {
     id: "santa-maria-della-salute",
