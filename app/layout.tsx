@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Sacred Architecture",
+  title: "Sacred Structures",
   description: "Explore the beauty and history of Catholic architecture around the world",
     generator: 'v0.dev'
 }
