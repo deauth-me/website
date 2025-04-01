@@ -10,7 +10,7 @@ export default function AboutPage() {
       <header className="sticky top-0 z-10 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center">
           <Link href="/" className="font-serif text-xl font-bold">
-            Sacred Architecture
+            Sacred Structures
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="/" className="text-sm font-medium text-muted-foreground">
