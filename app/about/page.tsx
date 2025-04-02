@@ -25,6 +25,9 @@ export default function AboutPage() {
             <Link href="/blog" className="text-sm font-medium text-muted-foreground">
               Blog
             </Link>
+             <Link href="#" className="text-sm font-medium text-muted-foreground">
+              Contact
+            </Link>
           </nav>
         </div>
       </header>
