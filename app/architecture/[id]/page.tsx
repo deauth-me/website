@@ -34,6 +34,9 @@ export default function ArchitecturePage({ params }: { params: { id: string } })
             <Link href="/" className="text-sm font-medium text-muted-foreground">
               Home
             </Link>
+            <Link href="/theory" className="text-sm font-medium text-muted-foreground">
+              Theory
+            </Link>
             <Link href="#" className="text-sm font-medium text-muted-foreground">
               About
             </Link>
