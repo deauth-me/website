@@ -26,6 +26,7 @@ export default function BlogPage() {
             <Link href="/blog" className="text-sm font-medium underline underline-offset-4">
               Blog
             </Link>
+            <Link href="#" className="text-sm font-medium text-muted-foreground">Contact</Link>
           </nav>
         </div>
       </header>
