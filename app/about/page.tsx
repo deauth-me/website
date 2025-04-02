@@ -77,7 +77,7 @@ export default function AboutPage() {
 
           <Separator className="my-8" />
 
-          <div className="grid gap-8 md:grid-cols-3">
+           <div className="grid gap-8 md:grid-cols-3">
             <div className="text-center">
               <h3 className="font-medium text-lg mb-2">Explore</h3>
               <p className="text-muted-foreground mb-4">
@@ -86,6 +86,30 @@ export default function AboutPage() {
               <Link href="/">
                 <button className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                   Browse Architecture
+                </button>
+              </Link>
+            </div>
+
+            <div className="text-center">
+              <h3 className="font-medium text-lg mb-2">Learn</h3>
+              <p className="text-muted-foreground mb-4">
+                Understand the principles and history behind Catholic architectural styles.
+              </p>
+              <Link href="/theory">
+                <button className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+                  Read Theory
+                </button>
+              </Link>
+            </div>
+
+            <div className="text-center">
+              <h3 className="font-medium text-lg mb-2">Stay Updated</h3>
+              <p className="text-muted-foreground mb-4">
+                Follow our blog for the latest articles, discoveries, and site additions.
+              </p>
+              <Link href="/blog">
+                <button className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+                  Visit Blog
                 </button>
               </Link>
             </div>
