@@ -54,25 +54,26 @@ export default function AboutPage() {
 
           <div className="prose max-w-none">
             <h2>Our Mission</h2>
+            <br>
             <p>
-              Sacred Architecture is dedicated to becoming the premier online resource for religious architecture, with
+              Sacred Structures is dedicated to becoming the premier online resource for religious architecture, with
               a particular focus on Catholic churches, cathedrals, basilicas, and monasteries around the world. Our
               mission is to document, preserve, and share the rich architectural heritage of the Catholic Church, making
               it accessible to scholars, students, travelers, and anyone with an appreciation for sacred spaces.
             </p>
-
+            <br>
             <p>
               This site is being updated and enhanced daily with new content, features, and architectural sites. Our
               team of researchers, historians, and architecture enthusiasts is constantly working to expand our database
               and provide the most comprehensive and accurate information available.
             </p>
-
+            <br>
             <h2>What We Offer</h2>
             <p>
               Our growing collection features detailed information on some of the world's most significant Catholic
               architectural sites, including:
             </p>
-
+            <br>
             <ul>
               <li>Comprehensive historical context and background</li>
               <li>Detailed architectural analysis and descriptions</li>
@@ -83,12 +84,13 @@ export default function AboutPage() {
             </ul>
 
             <h2>Our Approach</h2>
+              <br>
             <p>
               We believe that sacred architecture represents one of humanity's highest artistic and spiritual
               achievements. Catholic churches and cathedrals in particular embody centuries of theological thought,
               artistic innovation, and cultural expression. Our approach combines:
             </p>
-
+            <br>
             <ul>
               <li>Architectural expertise and historical research</li>
               <li>Theological understanding of sacred spaces</li>
@@ -97,11 +99,13 @@ export default function AboutPage() {
             </ul>
 
             <h2>Join Our Community</h2>
+            <br>
             <p>
-              Sacred Architecture is more than just a website—it's a growing community of people passionate about
+              Sacred Structures is more than just a website—it's a growing community of people passionate about
               religious architecture. We invite you to:
             </p>
 
+            <br>
             <ul>
               <li>Explore our extensive database of architectural sites</li>
               <li>Read our blog for the latest updates and in-depth articles</li>
@@ -156,7 +160,7 @@ export default function AboutPage() {
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Sacred Architecture. All rights reserved.
+            &copy; {new Date().getFullYear()} Sacred Structures. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="text-sm text-muted-foreground underline-offset-4 hover:underline">
