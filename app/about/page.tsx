@@ -54,6 +54,7 @@ export default function AboutPage() {
             </p>
             <br />
             <h2>What We Offer</h2>
+             <br />
             <p>
               Our growing collection features detailed information on some of the world's most significant Catholic architectural sites.
             </p>
