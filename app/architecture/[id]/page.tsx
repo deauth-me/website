@@ -1430,4 +1430,5 @@ const architectureData = [
   },
 
 ]
+]
 
