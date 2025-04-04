@@ -63,7 +63,7 @@ export default function Home() {
             <Link href="/blog" className="text-sm font-medium text-muted-foreground">
               Blog
             </Link>
-            <Link href="#" className="text-sm font-medium text-muted-foreground">
+            <Link href="/contact" className="text-sm font-medium text-muted-foreground">
               Contact
             </Link>
           </nav>
