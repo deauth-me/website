@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge"
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<string>("All")
   const [activeCountryFilter, setActiveCountryFilter] = useState<string>("All")
+  const [activeStyleFilter, setActiveStyleFilter] = useState<string>("All")
 
   // Get unique architecture types for the filter
   const architectureTypes = ["All", ...Array.from(new Set(architectureData.map((item) => item.type)))].sort()
@@ -31,7 +32,22 @@ export default function Home() {
     ).sort(),
   ]
 
-  // Filter the architecture data based on both active filters
+  // Get unique architectural styles for the filter
+  const architecturalStyles = [
+    "All",
+    ...Array.from(
+      new Set(
+        architectureData.map((item) => {
+          // Some items have multiple styles separated by commas or "and"
+          // For simplicity, we'll just use the first style mentioned
+          const style = item.architecturalStyle.split(",")[0].split(" and ")[0].trim()
+          return style
+        }),
+      ),
+    ).sort(),
+  ]
+
+  // Filter the architecture data based on all active filters
   const filteredArchitecture = architectureData.filter((item) => {
     const matchesType = activeFilter === "All" || item.type === activeFilter
 
@@ -40,7 +56,11 @@ export default function Home() {
     const country = locationParts.length > 1 ? locationParts[locationParts.length - 1] : item.location
     const matchesCountry = activeCountryFilter === "All" || country === activeCountryFilter
 
-    return matchesType && matchesCountry
+    // Check if the item matches the style filter
+    // We'll check if the architecturalStyle field contains the selected style
+    const matchesStyle = activeStyleFilter === "All" || item.architecturalStyle.includes(activeStyleFilter)
+
+    return matchesType && matchesCountry && matchesStyle
   })
 
   return (
@@ -76,30 +96,44 @@ export default function Home() {
               <p className="text-muted-foreground">Explore the beauty and history of sacred spaces around the world</p>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-              {activeFilter !== "All" && (
-                <Badge variant="outline" className="w-fit">
-                  Type: {activeFilter}
-                  <button
-                    className="ml-2 text-muted-foreground hover:text-foreground"
-                    onClick={() => setActiveFilter("All")}
-                    aria-label="Clear type filter"
-                  >
-                    ×
-                  </button>
-                </Badge>
-              )}
-              {activeCountryFilter !== "All" && (
-                <Badge variant="outline" className="w-fit">
-                  Country: {activeCountryFilter}
-                  <button
-                    className="ml-2 text-muted-foreground hover:text-foreground"
-                    onClick={() => setActiveCountryFilter("All")}
-                    aria-label="Clear country filter"
-                  >
-                    ×
-                  </button>
-                </Badge>
-              )}
+              <div className="flex flex-wrap gap-2 mb-2 sm:mb-0">
+                {activeFilter !== "All" && (
+                  <Badge variant="outline" className="w-fit">
+                    Type: {activeFilter}
+                    <button
+                      className="ml-2 text-muted-foreground hover:text-foreground"
+                      onClick={() => setActiveFilter("All")}
+                      aria-label="Clear type filter"
+                    >
+                      ×
+                    </button>
+                  </Badge>
+                )}
+                {activeCountryFilter !== "All" && (
+                  <Badge variant="outline" className="w-fit">
+                    Country: {activeCountryFilter}
+                    <button
+                      className="ml-2 text-muted-foreground hover:text-foreground"
+                      onClick={() => setActiveCountryFilter("All")}
+                      aria-label="Clear country filter"
+                    >
+                      ×
+                    </button>
+                  </Badge>
+                )}
+                {activeStyleFilter !== "All" && (
+                  <Badge variant="outline" className="w-fit">
+                    Style: {activeStyleFilter}
+                    <button
+                      className="ml-2 text-muted-foreground hover:text-foreground"
+                      onClick={() => setActiveStyleFilter("All")}
+                      aria-label="Clear style filter"
+                    >
+                      ×
+                    </button>
+                  </Badge>
+                )}
+              </div>
               <div className="flex gap-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -140,6 +174,26 @@ export default function Home() {
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="flex gap-2">
+                      <Filter className="h-4 w-4" />
+                      <span>Style</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    {architecturalStyles.map((style) => (
+                      <DropdownMenuItem
+                        key={style}
+                        className={activeStyleFilter === style ? "bg-muted font-medium" : ""}
+                        onClick={() => setActiveStyleFilter(style)}
+                      >
+                        {style}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
           </div>
@@ -148,11 +202,12 @@ export default function Home() {
         {filteredArchitecture.length === 0 ? (
           <div className="text-center py-12">
             <h2 className="text-xl font-medium mb-2">No results found</h2>
-            <p className="text-muted-foreground mb-4">No architecture matches your current filter.</p>
+            <p className="text-muted-foreground mb-4">No architecture matches your current filters.</p>
             <Button
               onClick={() => {
                 setActiveFilter("All")
                 setActiveCountryFilter("All")
+                setActiveStyleFilter("All")
               }}
             >
               Show all
@@ -162,7 +217,8 @@ export default function Home() {
           <>
             <div className="mb-4 text-sm text-muted-foreground">
               Showing {filteredArchitecture.length} {filteredArchitecture.length === 1 ? "result" : "results"}
-              {(activeFilter !== "All" || activeCountryFilter !== "All") && " with applied filters"}
+              {(activeFilter !== "All" || activeCountryFilter !== "All" || activeStyleFilter !== "All") &&
+                " with applied filters"}
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filteredArchitecture.map((item) => (
@@ -183,6 +239,7 @@ export default function Home() {
                     <CardContent className="p-4">
                       <h3 className="font-serif text-lg font-semibold">{item.name}</h3>
                       <p className="text-sm text-muted-foreground">{item.location}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{item.architecturalStyle}</p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -704,3 +761,4 @@ const architectureData = [
     features: ["Silver altar", "Cusco School paintings", "Cedar choir stalls", "Chapel of the Señor de los Temblores"],
   },
 ]
+
