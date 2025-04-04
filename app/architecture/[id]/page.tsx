@@ -37,10 +37,10 @@ export default function ArchitecturePage({ params }: { params: { id: string } })
             <Link href="/theory" className="text-sm font-medium text-muted-foreground">
               Theory
             </Link>
-            <Link href="#" className="text-sm font-medium text-muted-foreground">
+            <Link href="/about" className="text-sm font-medium text-muted-foreground">
               About
             </Link>
-            <Link href="#" className="text-sm font-medium text-muted-foreground">
+            <Link href="/contact" className="text-sm font-medium text-muted-foreground">
               Contact
             </Link>
           </nav>
