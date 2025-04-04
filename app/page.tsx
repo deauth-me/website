@@ -12,13 +12,36 @@ import { Badge } from "@/components/ui/badge"
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<string>("All")
+  const [activeCountryFilter, setActiveCountryFilter] = useState<string>("All")
 
   // Get unique architecture types for the filter
   const architectureTypes = ["All", ...Array.from(new Set(architectureData.map((item) => item.type)))].sort()
 
-  // Filter the architecture data based on the active filter
-  const filteredArchitecture =
-    activeFilter === "All" ? architectureData : architectureData.filter((item) => item.type === activeFilter)
+  // Get unique countries for the filter
+  const countries = [
+    "All",
+    ...Array.from(
+      new Set(
+        architectureData.map((item) => {
+          // Extract country from location (assuming format "City, Country")
+          const locationParts = item.location.split(", ")
+          return locationParts.length > 1 ? locationParts[locationParts.length - 1] : item.location
+        }),
+      ),
+    ).sort(),
+  ]
+
+  // Filter the architecture data based on both active filters
+  const filteredArchitecture = architectureData.filter((item) => {
+    const matchesType = activeFilter === "All" || item.type === activeFilter
+
+    // Extract country from location
+    const locationParts = item.location.split(", ")
+    const country = locationParts.length > 1 ? locationParts[locationParts.length - 1] : item.location
+    const matchesCountry = activeCountryFilter === "All" || country === activeCountryFilter
+
+    return matchesType && matchesCountry
+  })
 
   return (
     <div className="min-h-screen bg-background">
@@ -40,7 +63,9 @@ export default function Home() {
             <Link href="/blog" className="text-sm font-medium text-muted-foreground">
               Blog
             </Link>
-            <Link href="#" className="text-sm font-medium text-muted-foreground">Contact</Link>
+            <Link href="#" className="text-sm font-medium text-muted-foreground">
+              Contact
+            </Link>
           </nav>
         </div>
       </header>
@@ -48,41 +73,74 @@ export default function Home() {
         <section className="mb-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-          
               <p className="text-muted-foreground">Explore the beauty and history of sacred spaces around the world</p>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
               {activeFilter !== "All" && (
                 <Badge variant="outline" className="w-fit">
-                  {activeFilter}
+                  Type: {activeFilter}
                   <button
                     className="ml-2 text-muted-foreground hover:text-foreground"
                     onClick={() => setActiveFilter("All")}
-                    aria-label="Clear filter"
+                    aria-label="Clear type filter"
                   >
                     ×
                   </button>
                 </Badge>
               )}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="flex gap-2">
-                    <Filter className="h-4 w-4" />
-                    <span>Filter</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  {architectureTypes.map((type) => (
-                    <DropdownMenuItem
-                      key={type}
-                      className={activeFilter === type ? "bg-muted font-medium" : ""}
-                      onClick={() => setActiveFilter(type)}
-                    >
-                      {type}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+              {activeCountryFilter !== "All" && (
+                <Badge variant="outline" className="w-fit">
+                  Country: {activeCountryFilter}
+                  <button
+                    className="ml-2 text-muted-foreground hover:text-foreground"
+                    onClick={() => setActiveCountryFilter("All")}
+                    aria-label="Clear country filter"
+                  >
+                    ×
+                  </button>
+                </Badge>
+              )}
+              <div className="flex gap-2">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="flex gap-2">
+                      <Filter className="h-4 w-4" />
+                      <span>Type</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    {architectureTypes.map((type) => (
+                      <DropdownMenuItem
+                        key={type}
+                        className={activeFilter === type ? "bg-muted font-medium" : ""}
+                        onClick={() => setActiveFilter(type)}
+                      >
+                        {type}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="flex gap-2">
+                      <Filter className="h-4 w-4" />
+                      <span>Country</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    {countries.map((country) => (
+                      <DropdownMenuItem
+                        key={country}
+                        className={activeCountryFilter === country ? "bg-muted font-medium" : ""}
+                        onClick={() => setActiveCountryFilter(country)}
+                      >
+                        {country}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
         </section>
@@ -91,12 +149,20 @@ export default function Home() {
           <div className="text-center py-12">
             <h2 className="text-xl font-medium mb-2">No results found</h2>
             <p className="text-muted-foreground mb-4">No architecture matches your current filter.</p>
-            <Button onClick={() => setActiveFilter("All")}>Show all</Button>
+            <Button
+              onClick={() => {
+                setActiveFilter("All")
+                setActiveCountryFilter("All")
+              }}
+            >
+              Show all
+            </Button>
           </div>
         ) : (
           <>
             <div className="mb-4 text-sm text-muted-foreground">
               Showing {filteredArchitecture.length} {filteredArchitecture.length === 1 ? "result" : "results"}
+              {(activeFilter !== "All" || activeCountryFilter !== "All") && " with applied filters"}
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filteredArchitecture.map((item) => (
@@ -377,7 +443,7 @@ const architectureData = [
     architecturalStyle: "Italian Baroque",
     features: ["Borromini design", "Undulating facade", "Complex geometric plan", "Oval dome"],
   },
-   {
+  {
     id: "sant-ivo-alla-sapienza",
     name: "Sant'Ivo alla Sapienza",
     type: "Church",
@@ -541,4 +607,3 @@ const architectureData = [
     features: ["Three historical layers", "Apse mosaic", "Schola cantorum", "Mithraic temple"],
   },
 ]
-
