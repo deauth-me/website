@@ -1428,6 +1428,6 @@ const architectureData = [
     architecturalStyle: "Contemporary Minimalist",
     features: ["Glass facade", "Vertical arrangement", "Urban integration", "Minimalist interior"],
   },
-]
+
 ]
 
