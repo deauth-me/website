@@ -760,6 +760,19 @@ const architectureData = [
     architecturalStyle: "Spanish Renaissance, Baroque with Andean influences",
     features: ["Silver altar", "Cusco School paintings", "Cedar choir stalls", "Chapel of the Señor de los Temblores"],
   },
+  {
+    id: "notre-dame-de-pentecote",
+    name: "Notre-Dame de Pentecôte",
+    type: "Church",
+    location: "La Défense, Paris, France",
+    imageUrl: "/images/notre-dame-de-pentecote.jpg",
+    period: "Modern",
+    description:
+      "Located in the heart of Paris's business district, Notre-Dame de Pentecôte is a contemporary church designed as a place of worship and reflection for office workers. The seven-story glass and concrete structure features a minimalist design with a transparent facade that contrasts with the surrounding skyscrapers. The interior is arranged vertically with the main worship space elevated above street level.",
+    yearBuilt: "1998-2001",
+    architecturalStyle: "Contemporary Minimalist",
+    features: ["Glass facade", "Vertical arrangement", "Urban integration", "Minimalist interior"],
+  }
 ]
 
 
