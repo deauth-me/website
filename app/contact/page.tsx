@@ -6,10 +6,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Separator } from "@/components/ui/separator"
+import { SiteHeader } from "@/components/site-header"
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
+      <SiteHeader />
       <header className="sticky top-0 z-10 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center">
           <Link href="/" className="font-serif text-xl font-bold">
