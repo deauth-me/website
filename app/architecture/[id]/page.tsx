@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { SiteHeader } from "@/components/site-header"
 
 export default function ArchitecturePage({ params }: { params: { id: string } }) {
   // Find the architecture item by ID
@@ -25,6 +26,7 @@ export default function ArchitecturePage({ params }: { params: { id: string } })
 
   return (
     <div className="min-h-screen bg-background">
+      <SiteHeader />
       <header className="sticky top-0 z-10 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center">
           <Link href="/" className="font-serif text-xl font-bold">
